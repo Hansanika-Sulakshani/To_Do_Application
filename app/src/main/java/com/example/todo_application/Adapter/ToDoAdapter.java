@@ -43,7 +43,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
         return new MyViewHolder(view);
     }
 
-    //delete the task
+    //delete task
     public void deleteTask(int position){
         ToDoModel toDoModel = todoList.get(position);
         firestore.collection("task").document(toDoModel.TaskID).delete();
@@ -54,7 +54,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
     public Context getContext(){
         return home;
     }
-    //edit the task
+    //edit task
     public void editTask(int position){
         ToDoModel toDoModel = todoList.get(position);
 

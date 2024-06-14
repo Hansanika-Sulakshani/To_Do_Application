@@ -52,16 +52,12 @@ public class Home extends AppCompatActivity implements OnDialogCloseListner {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance();
 
-        // Get current user
         FirebaseUser user = auth.getCurrentUser();
         if (user != null) {
             UID = user.getUid();
         } else {
-            // Handle the case where the user is not logged in
-            //  redirect to login activity
             Toast.makeText(this, "You are Not Logged In ! Please Login ", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(Home.this, SignIn.class);
             startActivity(intent);
@@ -78,15 +74,15 @@ public class Home extends AppCompatActivity implements OnDialogCloseListner {
         back_button = findViewById(R.id.btn_back);
         menu_button = findViewById(R.id.btn_menu);
 
-        // Set up RecyclerView
+        // RecyclerView
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(Home.this));
 
-        // Set up adapter and list
+        // adapter and list
         list = new ArrayList<>();
         toDoAdapter = new ToDoAdapter(Home.this, list);
 
-        // Set up ItemTouchHelper for swipe actions (assuming you have implemented this in TouchHelper class)
+        // ItemTouchHelper for swipe actions
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new TouchHelper(toDoAdapter));
         itemTouchHelper.attachToRecyclerView(recyclerView);
 
@@ -122,7 +118,7 @@ public class Home extends AppCompatActivity implements OnDialogCloseListner {
             }
         });
 
-        // navigate to menu and start the intent
+        // navigate to menu
         menu_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,17 +139,13 @@ public class Home extends AppCompatActivity implements OnDialogCloseListner {
     }
 
     private void showData() {
-        // Query Firestore for tasks belonging to the current user, ordered by time
         query = firestore.collection("task")
-                //.whereEqualTo("userid", UID)
                 .orderBy("time", Query.Direction.DESCENDING);
 
         listenerRegistration = query.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if (error != null) {
-//                    Log.e("Firestore Error", error.getMessage());
-//                    Toast.makeText(Home.this, "Error loading data", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (value != null) {

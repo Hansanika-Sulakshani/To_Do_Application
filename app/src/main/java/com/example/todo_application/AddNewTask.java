@@ -89,10 +89,10 @@ public class AddNewTask extends BottomSheetDialogFragment {
         speech_btn = view.findViewById(R.id.speech_mic_btn);
         String userid = UUID.randomUUID().toString();
 
-        // Speech to text configuration
+
         speech_btn.setOnClickListener(v -> startSpeechRecognizer());
 
-        // Firestore Connection
+
         firestore = FirebaseFirestore.getInstance();
 
         boolean isUpdate = false;

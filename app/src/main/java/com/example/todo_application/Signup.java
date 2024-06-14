@@ -52,8 +52,6 @@ public class Signup extends AppCompatActivity {
         signintxt = findViewById(R.id.signintxt);
         register = findViewById(R.id.register_btn);
         usern = findViewById(R.id.username);
-       // progressBar = findViewById(R.id.signup_progressBar);
-
 
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
@@ -100,8 +98,6 @@ public class Signup extends AppCompatActivity {
                     return;
                 }
 
-
-                //progressBar.setVisibility(View.VISIBLE);
 
 
                 // Register the user in firebase
