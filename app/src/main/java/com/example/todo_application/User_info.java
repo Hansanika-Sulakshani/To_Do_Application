@@ -37,7 +37,6 @@ public class User_info extends AppCompatActivity {
         mobile_no = findViewById(R.id.dis_mobile_no);
         logout = findViewById(R.id.logout_btn);
         back_btn = findViewById(R.id.back);
-//        editdetails=findViewById(R.id.editdetails);
 
 
         logout.setOnClickListener(new View.OnClickListener() {
@@ -67,15 +66,6 @@ public class User_info extends AppCompatActivity {
             }
         });
 
-//        editdetails = findViewById(R.id.editdetails);
-//        editdetails.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i= new Intent(v.getContext(),EditProfile.class);
-//                Intent intent = new Intent(User_info.this, EditProfile.class);
-//                startActivity(intent);
-//            }
-//        });
 
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override

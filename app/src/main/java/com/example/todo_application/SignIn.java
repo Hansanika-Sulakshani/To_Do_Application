@@ -38,7 +38,6 @@ public class SignIn extends AppCompatActivity {
         password = findViewById(R.id.login_password);
         register = findViewById(R.id.create_acc_txt);
         login = findViewById(R.id.login_btn);
-        //progressBar =findViewById(R.id.progressBar);
         auth = FirebaseAuth.getInstance();
 
         login.setOnClickListener(new View.OnClickListener() {
